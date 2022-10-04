@@ -1,1 +1,71 @@
-<p>register works!</p>
+<div class="row">
+    <div class="col-6 m-auto">
+    <div class="card m-auto">
+      <div class="card-header">
+        Register
+      </div>
+      <div class="card-body">
+        <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+          <div class="form-group col-12">
+              <label for="name" class="form-label">Name</label>
+              <input type="text" class="form-control" formControlName="name">
+              <span *ngIf="f['name'].touched && f['name'].invalid" class="alert alert-danger">
+                Please Provide Name
+              </span>
+          </div>
+
+          <div class="form-group col-12">
+            <label for="email" class="form-label">Email</label>
+            <input type="text" class="form-control" formControlName="email">
+            <span *ngIf="f['email'].touched && f['email'].invalid" class="alert alert-danger">
+              Please Provide Email
+            </span>
+          </div>
+
+          <div class="form-group col-12">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" formControlName="password">
+            <span *ngIf="f['password'].touched && f['password'].invalid" class="alert alert-danger">
+              Please Provide Password
+            </span>
+          </div>
+
+          <div class="form-group col-12">
+            <label for="confirmPassword" class="form-label">Confirm Password</label>
+            <input type="password" class="form-control" formControlName="confirmPassword">
+            <span *ngIf="f['confirmPassword'].touched && f['confirmPassword'].invalid" class="alert alert-danger">
+              Please Provide Confirm Password
+            </span>
+          </div>
+
+          <div class="form-group col-12">
+            <label for="Mobile" class="form-label">Mobile</label>
+            <input type="text" class="form-control" formControlName="Mobile">
+            <span *ngIf="f['Mobile'].touched && f['Mobile'].invalid" class="alert alert-danger">
+              Please Provide Mobile Number
+            </span>
+          </div>
+          <!-- <div class="form-group col-12">
+            <label for="contactAddress" class="form-label">ContactAddress</label>
+            <input type="text" class="form-control" formControlName="contactAddress">
+            <span *ngIf="f['contactAddress'].touched && f['contactAddress'].invalid" class="alert alert-danger">
+              Please Provide Name
+            </span>
+          </div> -->
+
+          <div class="form-group col-12">
+            <button type="submit" class="btn btn-primary">Save</button>
+            <button type="reset" (click)="onReset()" class="btn btn-secondary ml-2">Cancel</button>
+          </div>
+          <div>
+            <p class="mb-0">Go Back to Login <a routerLinkActive="active" routerLink="/login" class="text-black-50 fw-bold">Login</a>
+            </p>
+            <a class="center" routerLinkActive="active" routerLink="" >Back to Homepage</a>
+            </div>
+        </form>
+      </div>
+    </div>
+    </div>
+  </div>
+
+
