@@ -12,12 +12,16 @@ import { MessageService } from './message.service';
 
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { HomeComponent } from './home/home.component';
+import { AddcompanyComponent } from './addcompany/addcompany.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    HomeComponent,
+    AddcompanyComponent
   ],
   imports: [
     BrowserModule,

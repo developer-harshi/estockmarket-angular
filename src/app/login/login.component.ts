@@ -43,18 +43,7 @@ export class LoginComponent implements OnInit {
                   // alert("Log in Success");
 
                     localStorage.setItem('userName', user.email??"");
-                    localStorage.setItem('role', user.role??"");
                     console.log(user.token);
-                    // this.alertify.success('Login Successful');
-                    if(user.role==="admin")
-                    {
-                      localStorage.setItem('token',((user.token??"")));
-                      console.log(localStorage.getItem("role"));
-                    this.router.navigateByUrl("/home");
-
-                    }
-                    else{
-                      console.log(localStorage.getItem("role"));
                       this._authService.authUserrolebased(userData).subscribe(
                         (response: UserForLogin) => {
                             console.log(response);
@@ -62,25 +51,17 @@ export class LoginComponent implements OnInit {
                             if (userlogin) {
                               localStorage.setItem('token',((userlogin.token??"")));
 
-
                             }
                           });
 
-                      this.router.navigateByUrl("/userhome");
-
-
-                    }
-
+                      this.router.navigateByUrl("/home");
                 }
             } , error => {
               console.log('httperror:');
               console.log(error);
           }
 
-
         );
-
-
   }
   get f(){
     return this.loginForm.controls;

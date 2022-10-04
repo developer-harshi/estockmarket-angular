@@ -39,7 +39,7 @@ export class AuthService {
 
 authUserrolebased(user: Login):Observable<any> {
   const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
-  return this.http.post((baseUrl+'/Authenticate'),user,httpOptions) .pipe() ;
+  return this.http.post((baseUrl+'/company/Authenticate'),user,httpOptions) .pipe() ;
 }
 
 
