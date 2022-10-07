@@ -7,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddcompanyComponent implements OnInit {
 
+stockpricedetails:Array<any>=[];
+
+
   constructor() { }
 
   ngOnInit(): void {

@@ -1,0 +1,23 @@
+.addcompany
+{
+  /* border: 1px solid black; */
+  margin-top: 100px;
+  margin-bottom: 100px;
+  margin-right: 150px;
+  margin-left: 80px;
+
+}
+.left{
+  float:left;
+  margin-right: 1in;
+}
+h1{
+  padding-left: 30%;
+}
+.add-button
+{
+
+   /* margin-right: 150px; */
+  margin-left: 1300px;
+
+}
