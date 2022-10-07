@@ -49,7 +49,8 @@ export class AddcompanyComponent implements OnInit {
     );
   }
   addItems() {
-    this.newItem.startDate=this.datepipe.transform((new Date), 'dd-MM-yyyy h:mm:ss');
+    this.newItem.startDate=this.datepipe.transform((new Date), 'dd-MM-YYYY h:mm:ss');
+    this.newItem.companyCode=this.company.companyCode;
     console.log(this.newItem);
 
     this.stockpricedetails.push(this.newItem);
@@ -57,5 +58,36 @@ export class AddcompanyComponent implements OnInit {
   }
   removeItem(index: number) {
     this.stockpricedetails.splice(index, 1); // remove 1 item at ith place
+  }
+  cancel()
+  {
+    this.routes.navigateByUrl("/search-flight");
+
+
+
+  }
+  submit()
+  {
+    // console.log(this.flightBooking);
+
+    this._companyservice.savecompany(this.company).subscribe((res) => {
+      console.log('Issue added!');
+      //  this.routes.navigateByUrl("/manage-history");
+    }
+    , error => {
+      console.log('httperror:');
+      console.log(error);
+  }
+    );
+    this._stockservice.savestocks(this.stockpricedetails).subscribe((res) => {
+      console.log('Issue added!');
+      //  this.routes.navigateByUrl("/manage-history");
+    }
+    , error => {
+      console.log('httperror:');
+      console.log(error);
+  }
+    );
+
   }
 }
