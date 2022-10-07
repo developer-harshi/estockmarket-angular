@@ -22,8 +22,8 @@ export class StockService {
   private handleError: HandleError;
   constructor(private http: HttpClient,httpErrorHandler: HttpErrorHandler) {  this.handleError = httpErrorHandler.createHandleError('StockService');}
 
-  emptystock(companyCode: any):Observable<any> {
-    return this.http.get((baseUrl+'/stock/empty/'+companyCode),requestOptions) .pipe(
+  emptystock():Observable<any> {
+    return this.http.get((baseUrl+'/stock/empty'),requestOptions) .pipe(
       catchError(this.handleError())
     );
   }

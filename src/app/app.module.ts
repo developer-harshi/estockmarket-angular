@@ -7,7 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpErrorHandler } from './http-error-handler.service';
 import { MessageService } from './message.service';
-
+import { DatePipe } from '@angular/common';
 
 
 import { LoginComponent } from './login/login.component';
@@ -33,7 +33,9 @@ import { AddcompanyComponent } from './addcompany/addcompany.component';
   ],
   providers: [
     HttpErrorHandler,
-    MessageService],
+    MessageService,
+    DatePipe
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

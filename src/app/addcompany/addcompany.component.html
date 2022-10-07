@@ -1,42 +1,99 @@
 <app-home></app-home>
-<h1 style="align-content: center;">Company Registration</h1>
+<h1 style="align-content: center">Company Registration</h1>
 <form class="addcompany">
   <div class="left">
-    From date:<input style="width: 200px" type="date" class="form-control" >
-    To date:<input style="width: 200px" type="date" class="form-control" >
+    <label for="companyCode">Company Code</label>
+    <input
+      style="width: 150px"
+      type="text"
+      class="form-control"
+      placeholder="companyCode"
+      name="companyCode"
+      [(ngModel)]="company.companyCode"
+    />
   </div>
-    <div class="left">
-    <label for="companycode">Company Code</label>
-    <input style="width: 150px" type="text" class="form-control"  placeholder="companycode" name ="companycode" >
-    </div>
-    <div class="left">
-      <label for="companyname">Company Name</label>
-      <input style="width: 150px" type="text" class="form-control"  placeholder="companyname" name ="companyname"  >
-      </div>
+  <div class="left">
+    <label for="companyName">Company Name</label>
+    <input
+      style="width: 150px"
+      type="text"
+      class="form-control"
+      placeholder="companyName"
+      name="companyName"
+      [(ngModel)]="company.companyName"
+    />
+  </div>
+  <div class="left">
+    <label for="companyCEO">Company CEO</label>
+    <input
+      style="width: 150px"
+      type="text"
+      class="form-control"
+      placeholder="companyCEO"
+      name="companyCEO"
+      [(ngModel)]="company.companyCEO"
+    />
+  </div>
+  <div class="left">
+    <label for="companyTurnOver">Company Turnover</label>
+    <input
+      style="width: 150px"
+      type="text"
+      class="form-control"
+      placeholder="companyturnover"
+      name="companyTurnOver"
+      [(ngModel)]="company.companyTurnOver"
+    />
+  </div>
+  <div class="left">
+    <label for="companyWebsite">Company website</label>
+    <input
+      style="width: 150px"
+      type="text"
+      class="form-control"
+      placeholder="companyWebsite"
+      name="companyWebsite"
+      [(ngModel)]="company.companyWebsite"
+    />
+  </div>
+  <div class="left">
+    <label for="stockExchangeEnum">Stock Exchange</label>
+    <input
+      style="width: 150px"
+      type="text"
+      class="form-control"
+      placeholder="stockExchangeEnum"
+      name="stockExchangeEnum"
+      [(ngModel)]="company.stockExchangeEnum"
+    />
+  </div>
 </form>
-<br>
-<button type="submit" class="add-button btn btn-primary" >Add</button>
+<br />
+<button type="submit" class="add-button btn btn-primary" (click)="addItems()">Add</button>
 
-    <table class="table">
-      <thead>
-        <tr>
-          <!-- <th scope="col" style="display: none;">Id</th> -->
-          <th scope="col">Stock Price</th>
-          <th scope="col">Date</th>
-          <th scope="col">Time</th>
-        </tr>
-      </thead>
-      <tbody >
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col" style="display: none">company Code</th>
+      <th scope="col">Stock Price</th>
+      <th scope="col">Startdate</th>
+      <!-- <th scope="col">Enddate</th> -->
+    </tr>
+  </thead>
+  <tbody>
     <!-- debugger; -->
-        <tr >
-
-          <td><input type="number" style="width: 100px" name="person.age" ></td>
-          <td><input type="text" style="width: 200px" name="person.name" ></td>
-          <td><input type="text" style="width: 200px" name="person.name" ></td>
-        </tr>
-      </tbody >
-    </table>
-
-
-
-
+    <tr *ngFor="let stock of stockpricedetails ; let i = index">
+      <td style="display: none">
+        <input
+          type="text"
+          style="width: 200px"
+          name="stock.name"
+          [(ngModel)]="stock.name"
+        />
+      </td>
+      <td><input type="number" style="width: 100px" name="stock.price" [(ngModel)]="stock.price"/></td>
+      <td><input type="datetime" style="width: 200px" name="stock.startDate" [(ngModel)]="stock.startDate"/></td>
+      <!-- <td><input type="date" style="width: 200px" name="stock.endDate" [(ngModel)]="stock.endDate"/></td> -->
+    </tr>
+  </tbody>
+</table>

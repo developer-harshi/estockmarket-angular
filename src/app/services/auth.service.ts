@@ -29,7 +29,7 @@ export class AuthService {
       .pipe(catchError(this.handleError('register', data)));
   }
 
-  authUserrolebased(user: Login): Observable<any> {
+  authenticate(user: Login): Observable<any> {
     const httpOptions = {
       headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
     };
