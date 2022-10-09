@@ -69,12 +69,14 @@
   </div>
 </form>
 <br />
-<button type="submit" class="add-button btn btn-primary" (click)="addItems()">Add</button>
+<button type="submit" class="add-button btn btn-primary" (click)="addItems()">
+  Add
+</button>
 
 <table class="table">
   <thead>
     <tr>
-      <th scope="col" style="display: none">company Code</th>
+      <th scope="col" style="display: none">Id</th>
       <th scope="col">Stock Price</th>
       <th scope="col">Startdate</th>
       <!-- <th scope="col">Enddate</th> -->
@@ -82,20 +84,27 @@
   </thead>
   <tbody>
     <!-- debugger; -->
-    <tr *ngFor="let stock of stockpricedetails ; let i = index">
-      <td style="display: none">
+    <tr *ngFor="let stock of stockpricedetails; let i = index">
+      <td style="display: none">{{ stock.index }}</td>
+      <td>
         <input
-          type="text"
-          style="width: 200px"
-          name="stock.name"
-          [(ngModel)]="stock.name"
+          type="number"
+          style="width: 100px"
+          name="stockPrice"
+          [(ngModel)]="stock.stockPrice"
         />
       </td>
-      <td><input type="number" style="width: 100px" name="stock.price" [(ngModel)]="stock.price"/></td>
-      <td><input type="datetime" style="width: 200px" name="stock.startDate" [(ngModel)]="stock.startDate"/></td>
+      <td>
+        <input
+          type="datetime"
+          style="width: 200px"
+          name="startDate"
+          [(ngModel)]="stock.startDate"
+        />
+      </td>
       <!-- <td><input type="date" style="width: 200px" name="stock.endDate" [(ngModel)]="stock.endDate"/></td> -->
     </tr>
   </tbody>
 </table>
-<button type="submit" class="btn btn-primary" (click)="submit()">Submit</button>
-    <button type="submit" class="btn btn-primary" (click)="cancel()"> Cancel</button>
+<button type="submit" class="btn btn-primary" (click)="submit()">Save</button>
+<button type="submit" class="btn btn-primary" (click)="cancel()">Cancel</button>

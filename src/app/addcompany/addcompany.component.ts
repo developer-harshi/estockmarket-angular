@@ -14,19 +14,23 @@ export class AddcompanyComponent implements OnInit {
   companycode: any;
   company: any;
   newItem: any;
-
+  start:Date | undefined;
 
   constructor(
     private _companyservice: CompanyService,
     private route: ActivatedRoute,
     private routes: Router,
-    private _stockservice: StockService,public datepipe: DatePipe
+    private _stockservice: StockService,
+    public datepipe: DatePipe
   ) {}
 
   ngOnInit(): void {
-    console.log(this.route.snapshot.params["companycode"]);
-    this.companycode =this.route.snapshot.params["companycode"];
+    console.log(this.route.snapshot.params['companycode']);
+    this.companycode = this.route.snapshot.params['companycode'];
     this.registerCompany();
+    this.stocks();
+
+
   }
   registerCompany() {
     this._companyservice.getcompany(this.companycode).subscribe(
@@ -39,10 +43,49 @@ export class AddcompanyComponent implements OnInit {
         console.log(error);
       }
     );
+
+
+  }
+  addItems() {
+    console.log('step')
+    let item:any;
     this._stockservice.emptystock().subscribe(
       (data) => {
-        this.newItem = data;
+         item = data;
         console.log(this.newItem);
+        this.stockpricedetails.push(item);
+      },
+      (error) => {
+        console.log('httperror:');
+        console.log(error);
+      }
+    );
+
+
+  }
+  removeItem(index: number) {
+    this.stockpricedetails.splice(index, 1); // remove 1 item at ith place
+  }
+  cancel() {
+    this.routes.navigateByUrl('/companylist');
+  }
+  submit() {
+    // console.log(this.flightBooking);
+    this.userset();
+    this._companyservice.savecompany(this.company).subscribe(
+      (res) => {
+        console.log('Issue added!');
+        this.routes.navigateByUrl("/companylist");
+      },
+      (error) => {
+        console.log('httperror:');
+        console.log(error);
+      }
+    );
+    this._stockservice.savestocks(this.stockpricedetails).subscribe(
+      (res) => {
+        console.log('Issue added!');
+        //  this.routes.navigateByUrl("/manage-history");
       },
       (error) => {
         console.log('httperror:');
@@ -50,46 +93,28 @@ export class AddcompanyComponent implements OnInit {
       }
     );
   }
-  addItems() {
-    this.newItem.startDate=this.datepipe.transform((new Date), 'dd-MM-YYYY h:mm:ss');
-    this.newItem.companyCode=this.company.companyCode;
-    console.log(this.newItem);
-
-    this.stockpricedetails.push(this.newItem);
-    // this.newItem = {};
-  }
-  removeItem(index: number) {
-    this.stockpricedetails.splice(index, 1); // remove 1 item at ith place
-  }
-  cancel()
+  stocks()
   {
-    this.routes.navigateByUrl("/search-flight");
+    this._stockservice.getstock(this.companycode).subscribe(
+      (data) => {
+        this.stockpricedetails = data;
 
-
-
+      },
+      (error) => {
+        console.log('httperror:');
+        console.log(error);
+      }
+    );
   }
-  submit()
+
+  userset()
   {
-    // console.log(this.flightBooking);
-
-    this._companyservice.savecompany(this.company).subscribe((res) => {
-      console.log('Issue added!');
-      //  this.routes.navigateByUrl("/manage-history");
-    }
-    , error => {
-      console.log('httperror:');
-      console.log(error);
-  }
-    );
-    this._stockservice.savestocks(this.stockpricedetails).subscribe((res) => {
-      console.log('Issue added!');
-      //  this.routes.navigateByUrl("/manage-history");
-    }
-    , error => {
-      console.log('httperror:');
-      console.log(error);
-  }
-    );
-
+    console.log('hai');
+    console.log(this.company.isAdd);
+      if(this.company.isAdd!=false)
+      {
+        console.log(localStorage.getItem('userName'));
+        this.company.userName=localStorage.getItem('userName');
+      }
   }
 }

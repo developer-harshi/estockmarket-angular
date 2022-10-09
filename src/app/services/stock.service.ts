@@ -35,12 +35,16 @@ export class StockService {
     );
   }
 
-  deletestock(id: any):Observable<any> {
-    return this.http.get((baseUrl+'/stock/delete/'+id),requestOptions) .pipe(
+  deletestock(companyCode: any):Observable<any> {
+    return this.http.get((baseUrl+'/stock/delete/'+companyCode),requestOptions) .pipe(
       catchError(this.handleError())
     );
   }
-
+  getstock(companyCode: any):Observable<any> {
+    return this.http.get((baseUrl+'/stock/get/'+companyCode),requestOptions) .pipe(
+      catchError(this.handleError())
+    );
+  }
 
 
 
