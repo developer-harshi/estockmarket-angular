@@ -38,6 +38,13 @@ export class CompanyService {
     return this.http.get((baseUrl+'/company/delete/'+companyCode),requestOptions) .pipe(
       catchError(this.handleError())
     );
+
   }
+  getcompanylist():Observable<any> {
+    return this.http.get((baseUrl+'/company/getall'),requestOptions) .pipe(
+      catchError(this.handleError())
+    );
+  }
+
 
 }

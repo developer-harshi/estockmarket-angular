@@ -24,6 +24,8 @@ export class AddcompanyComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    console.log(this.route.snapshot.params["companycode"]);
+    this.companycode =this.route.snapshot.params["companycode"];
     this.registerCompany();
   }
   registerCompany() {

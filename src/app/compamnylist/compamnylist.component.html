@@ -1,0 +1,32 @@
+<app-home></app-home>
+
+<div class="manage-airline">
+  <button class="add-button btn btn-primary" type="submit" routerLink="/addcompany/''">Register Company</button>
+<table class="table">
+  <thead>
+    <tr>
+      <!-- <th scope="col" style="display: none;">Id</th> -->
+      <th scope="col">Company Code</th>
+      <th scope="col">Company Name</th>
+      <th scope="col">Company CEO</th>
+      <th scope="col">Stock Exchangem</th>
+    </tr>
+  </thead>
+  <tbody >
+<!-- debugger; -->
+    <tr *ngFor="let company of companylist">
+
+      <!-- <td style="display: none;">{{airline.id}}</td> -->
+      <td>{{company.companyCode}}</td>
+      <td>{{company.companyName}}</td>
+      <td>{{company.companyCEO}}</td>
+      <td >{{company.stockExchange}}</td>
+      <td ><button class="btn btn-primary" type="submit" routerLink="/addcompany/{{company.companyCode}}">Edit</button></td>
+      <td ><button class="btn btn-primary" type="submit" (click)="Delete(company.companyCode)">Delete</button></td>
+    </tr>
+
+  </tbody>
+</table>
+</div>
+
+
