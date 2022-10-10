@@ -35,8 +35,8 @@ export class StockService {
     );
   }
 
-  deletestock(companyCode: any):Observable<any> {
-    return this.http.get((baseUrl+'/stock/delete/'+companyCode),requestOptions) .pipe(
+  deletestock(id: any):Observable<any> {
+    return this.http.get((baseUrl+'/stock/delete/'+id),requestOptions) .pipe(
       catchError(this.handleError())
     );
   }
@@ -46,7 +46,11 @@ export class StockService {
     );
   }
 
-
+  fetchstock(companyCode: any,startDate:any,endDate:any):Observable<any> {
+    return this.http.get((baseUrl+'/stock/fetch/'+companyCode+'/'+startDate+'/'+endDate),requestOptions) .pipe(
+      catchError(this.handleError())
+    );
+  }
 
 
 

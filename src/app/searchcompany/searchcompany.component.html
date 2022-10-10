@@ -1,0 +1,81 @@
+<app-home></app-home>
+<h1 style="align-content: center">Company Registration</h1>
+<form class="addcompany">
+  <div class="form-group ">
+    <label for="Company Code"><h3>Select company Code</h3></label>
+    <select name="companyCode" [(ngModel)]="company.companyCode">
+      <option name ="companyCode"[ngValue]="null">Select Airline </option>
+      <option *ngFor="let option of companyList"
+              [ngValue]="option.companyCode" [innerHtml]="option.companyCode"></option>
+    </select>
+
+  </div>
+  <div class="left">
+    <label for="companyCode">Company Code</label>
+    <input
+      style="width: 150px"
+      type="text"
+      class="form-control"
+      placeholder="companyCode"
+      name="companyCode"
+      [(ngModel)]="company.companyCode"
+    />
+  </div>
+  <div class="left">
+    <label for="companyName">Company Name</label>
+    <input
+      style="width: 150px"
+      type="text"
+      class="form-control"
+      placeholder="companyName"
+      name="companyName"
+      [(ngModel)]="company.companyName"
+    />
+  </div>
+</form>
+<br />
+
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col" style="display: none">Id</th>
+      <th scope="col">Stock Price</th>
+      <th scope="col">Date</th>
+      <th scope="col">Time</th>
+      <!-- <th scope="col">Enddate</th> -->
+    </tr>
+  </thead>
+  <tbody>
+    <!-- debugger; -->
+    <tr *ngFor="let stock of stockpricedetails; let i = index">
+      <td style="display: none">{{ stock.index }}</td>
+      <td>
+        <input
+          type="number"
+          style="width: 100px"
+          name="stockPrice"
+          [(ngModel)]="stock.stockPrice"
+        />
+      </td>
+      <td>
+        <input
+          type="datetime"
+          style="width: 200px"
+          name="startDate"
+          [(ngModel)]="stock.startDate"
+        />
+      </td>
+      <td>
+        <input
+          type="time"
+          style="width: 200px"
+          name="time"
+          [(ngModel)]="stock.time"
+        />
+      </td>
+      <td ><button class="btn btn-primary" type="submit" (click)="removeItem(stock.id)">Delete</button></td>
+    </tr>
+  </tbody>
+</table>
+
