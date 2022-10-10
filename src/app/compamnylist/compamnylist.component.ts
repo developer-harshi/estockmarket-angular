@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CompanyService } from '../services/company.service';
 
 @Component({
@@ -10,7 +10,8 @@ import { CompanyService } from '../services/company.service';
 export class CompamnylistComponent implements OnInit {
 
   companylist:any;
-  constructor(private _companyService:CompanyService,private router:Router) { }
+  constructor(private _companyService:CompanyService,
+    private routes: Router,private route: ActivatedRoute,) { }
 
   ngOnInit(): void {
 
@@ -27,6 +28,16 @@ export class CompamnylistComponent implements OnInit {
   }
   Delete(companyCode:any)
   {
+    this._companyService.deletecompany(companyCode).subscribe(
+      data => {
+          console.log(data);
+          this.ngOnInit();
+      }, error => {
+          console.log('httperror:');
+          console.log(error);
+      }
+  );
+
 
   }
 

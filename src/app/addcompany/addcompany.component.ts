@@ -52,7 +52,7 @@ export class AddcompanyComponent implements OnInit {
     this._stockservice.emptystock().subscribe(
       (data) => {
          item = data;
-        console.log(this.newItem);
+         item.companyCode=this.company.companyCode;
         this.stockpricedetails.push(item);
       },
       (error) => {
