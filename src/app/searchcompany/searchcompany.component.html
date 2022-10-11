@@ -1,31 +1,23 @@
 <app-home></app-home>
 
-<form class="addcompany">
+<form class="serachcompany" >
   <div class="form-group ">
-    <label for="CompanyCode"><h3>Select company Code</h3></label>
+    <label for="CompanyCode" style="margin-right:10px"><b> Company Code :</b></label>
     <select name="companyCode" [(ngModel)]="company.companyCode" (change)="changeCode($event.target)">
 
-      <option name ="companyCode"[ngValue]="company.companyCode">Select Companycode </option>
+      <option name ="companyCode"[ngValue]="company.companyCode">Select Company code </option>
       <option *ngFor="let option of companyList"
               [ngValue]="option.companyCode" [innerHtml]="option.companyCode"></option>
     </select>
 
   </div>
 
-  <div class="left">
-    <label for="companyName">Company Name</label>
-    <input
-      style="width: 150px"
-      type="text"
-      class="form-control"
-      placeholder="companyName"
-      name="companyName"
-      [(ngModel)]="company.companyName"
-    />
+  <div class="form-group">
+    <label for="companyName" style="margin-right:10px"><b> Company Name :</b></label>
+    <input type="text"   name="companyName" [(ngModel)]="company.companyName" >
+
   </div>
 </form>
-<br />
-
 
 <table class="table">
   <thead>
