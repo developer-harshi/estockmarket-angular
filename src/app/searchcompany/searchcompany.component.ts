@@ -13,6 +13,8 @@ export class SearchcompanyComponent implements OnInit {
   companycode: any;
   company: any;
   companyList:any;
+  startDate:any;
+  endDate:any;
 
   constructor(private _companyService:CompanyService,
     private routes: Router,private route: ActivatedRoute,private _stockService:StockService,) { }
@@ -42,7 +44,7 @@ export class SearchcompanyComponent implements OnInit {
   );
 
   }
-  search(companyCode:any,startDate:any,endDate:any)
+  searchStock(companyCode:any,startDate:any,endDate:any)
   {
     this._stockService.fetchstock(companyCode,startDate,endDate).subscribe(
       data => {
@@ -78,8 +80,6 @@ export class SearchcompanyComponent implements OnInit {
     console.log(this.company.companyCode);
     this.companycode=this.company.companyCode;
     this.registerCompany();
-
-
 	}
 
 }
