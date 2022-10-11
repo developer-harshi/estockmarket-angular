@@ -1,26 +1,17 @@
 <app-home></app-home>
-<h1 style="align-content: center">Company Registration</h1>
+
 <form class="addcompany">
   <div class="form-group ">
-    <label for="Company Code"><h3>Select company Code</h3></label>
-    <select name="companyCode" [(ngModel)]="company.companyCode">
-      <option name ="companyCode"[ngValue]="null">Select Airline </option>
+    <label for="CompanyCode"><h3>Select company Code</h3></label>
+    <select name="companyCode" [(ngModel)]="company.companyCode" (change)="changeCode($event.target)">
+
+      <option name ="companyCode"[ngValue]="company.companyCode">Select Companycode </option>
       <option *ngFor="let option of companyList"
               [ngValue]="option.companyCode" [innerHtml]="option.companyCode"></option>
     </select>
 
   </div>
-  <div class="left">
-    <label for="companyCode">Company Code</label>
-    <input
-      style="width: 150px"
-      type="text"
-      class="form-control"
-      placeholder="companyCode"
-      name="companyCode"
-      [(ngModel)]="company.companyCode"
-    />
-  </div>
+
   <div class="left">
     <label for="companyName">Company Name</label>
     <input

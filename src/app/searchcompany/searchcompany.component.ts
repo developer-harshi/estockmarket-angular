@@ -27,6 +27,7 @@ export class SearchcompanyComponent implements OnInit {
           console.log(error);
       }
   );
+  this.registerCompany()
   }
   removeItem(id:any)
   {
@@ -55,4 +56,30 @@ export class SearchcompanyComponent implements OnInit {
   );
 
   }
+
+
+  registerCompany() {
+    this._companyService.getcompany(this.companycode).subscribe(
+      (data) => {
+        this.company = data;
+        console.log(this.company);
+      },
+      (error) => {
+        console.log('httperror:');
+        console.log(error);
+      }
+    );
+
+
+  }
+
+  changeCode(companyCode: any) {
+
+    console.log(this.company.companyCode);
+    this.companycode=this.company.companyCode;
+    this.registerCompany();
+
+
+	}
+
 }
