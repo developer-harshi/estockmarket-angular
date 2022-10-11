@@ -1,15 +1,14 @@
 .addcompany
 {
-  /* border: 1px solid black; */
-  margin-top: 50px;
+
+  margin-top: 100px;
   margin-bottom: 100px;
-  margin-right: 150px;
   margin-left: 80px;
 
 }
 .left{
   float:left;
-  margin-right: 1in;
+  margin-right: 150px;
 }
 h1{
   padding-left: 30%;
@@ -24,14 +23,6 @@ h1{
 .table
 {
 
-  margin-right: 150px;
+  /* margin-right: 150px; */
   margin-left: 80px;
 }
-.container{
-  /* width: 100%; */
-  margin-left: 80%;
-}
-
-/* .container2 > button {
-  float: left;
-} */

@@ -1,5 +1,5 @@
 <app-home></app-home>
-<h1 style="align-content: center">Company Registration</h1>
+<h1 >Company Registration</h1>
 <form class="addcompany">
   <div class="left">
     <label for="companyCode">Company Code</label>
@@ -140,7 +140,7 @@
 <table class="table">
   <thead>
     <tr>
-      <th scope="col" style="display: none">Id</th>
+      <!-- <th scope="col" style="display: none">Id</th> -->
       <th scope="col">Stock Price</th>
       <th scope="col">Startdate</th>
       <!-- <th scope="col">Enddate</th> -->
@@ -149,7 +149,7 @@
   <tbody>
     <!-- debugger; -->
     <tr *ngFor="let stock of stockpricedetails; let i = index">
-      <td style="display: none">{{ stock.index }}</td>
+      <!-- <td style="display: none">{{ stock.index }}</td> -->
       <td>
         <input
           type="number"
@@ -169,7 +169,7 @@
       <td>
         <button
           class="btn btn-primary"
-          style="width: 200px"
+          style="width: 100px"
           type="submit"
           (click)="removeItem(i)"
         >

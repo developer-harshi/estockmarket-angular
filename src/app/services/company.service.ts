@@ -45,6 +45,10 @@ export class CompanyService {
       catchError(this.handleError())
     );
   }
-
+  getcompanyinfo(companyCode:any):Observable<any> {
+    return this.http.get((baseUrl+'/company/info/'+companyCode),requestOptions) .pipe(
+      catchError(this.handleError())
+    );
+  }
 
 }
