@@ -15,6 +15,7 @@ export class AddcompanyComponent implements OnInit {
   company: any;
   newItem: any;
   start:Date | undefined;
+  exchanges:Array<any> = ["BSE","NSE"];
 
   constructor(
     private _companyservice: CompanyService,

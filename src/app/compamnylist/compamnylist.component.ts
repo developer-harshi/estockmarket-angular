@@ -40,5 +40,9 @@ export class CompamnylistComponent implements OnInit {
 
 
   }
+  View(companyCode:any)
+  {
+
+  }
 
 }

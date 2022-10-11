@@ -1,6 +1,6 @@
 <app-home></app-home>
 
-<div class="manage-airline">
+<div class="companylist">
   <!-- <button class="add-button btn btn-primary" type="submit" routerLink="/addcompany/''">Register Company</button> -->
 <table class="table">
   <thead>
@@ -10,6 +10,9 @@
       <th scope="col">Company Name</th>
       <th scope="col">Company CEO</th>
       <th scope="col">Stock Exchangem</th>
+      <th  scope="col">Edit</th>
+      <th  scope="col">Cancel</th>
+      <th scope="col">View/Filter</th>
     </tr>
   </thead>
   <tbody >
@@ -23,6 +26,7 @@
       <td >{{company.stockExchange}}</td>
       <td ><button class="btn btn-primary" type="submit" routerLink="/addcompany/{{company.companyCode}}">Edit</button></td>
       <td ><button class="btn btn-primary" type="submit" (click)="Delete(company.companyCode)">Delete</button></td>
+      <td ><button class="btn btn-primary" type="submit" (click)="View(company.companyCode)">View/Filter</button></td>
     </tr>
 
   </tbody>

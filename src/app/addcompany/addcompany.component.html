@@ -7,10 +7,22 @@
       style="width: 150px"
       type="text"
       class="form-control"
-      placeholder="companyCode"
       name="companyCode"
+      required
+      #companyCode="ngModel"
       [(ngModel)]="company.companyCode"
     />
+
+    <div
+      *ngIf="
+        !companyCode?.valid && (companyCode?.dirty || companyCode?.touched)
+      "
+      class="error"
+    >
+      <div *ngIf="companyCode.errors">
+        <p style="color: red">Companycode is required</p>
+      </div>
+    </div>
   </div>
   <div class="left">
     <label for="companyName">Company Name</label>
@@ -18,10 +30,21 @@
       style="width: 150px"
       type="text"
       class="form-control"
-      placeholder="companyName"
       name="companyName"
+      required
+      #companyName="ngModel"
       [(ngModel)]="company.companyName"
     />
+    <div
+      *ngIf="
+        !companyName?.valid && (companyName?.dirty || companyName?.touched)
+      "
+      class="error"
+    >
+      <div *ngIf="companyName.errors">
+        <p style="color: red">Company name is required</p>
+      </div>
+    </div>
   </div>
   <div class="left">
     <label for="companyCEO">Company CEO</label>
@@ -29,21 +52,46 @@
       style="width: 150px"
       type="text"
       class="form-control"
-      placeholder="companyCEO"
       name="companyCEO"
+      required
+      #companyCEO="ngModel"
       [(ngModel)]="company.companyCEO"
     />
+    <div
+      *ngIf="!companyCEO?.valid && (companyCEO?.dirty || companyCEO?.touched)"
+      class="error"
+    >
+      <div *ngIf="companyCEO.errors">
+        <p style="color: red">Company CEO is required</p>
+      </div>
+    </div>
   </div>
   <div class="left">
     <label for="companyTurnOver">Company Turnover</label>
     <input
       style="width: 150px"
-      type="text"
+      type="number"
       class="form-control"
-      placeholder="companyturnover"
+      placeholder="in crores"
       name="companyTurnOver"
+      required
+      min="10"
+      #companyTurnOver="ngModel"
       [(ngModel)]="company.companyTurnOver"
     />
+    <div
+      *ngIf="
+        !companyTurnOver?.valid &&
+        (companyTurnOver?.dirty || companyTurnOver?.touched)
+      "
+      class="error"
+    >
+      <div *ngIf="companyCEO.errors">
+        <p style="color: red">
+          Company turn over is required . Should be grater than 10 cr
+        </p>
+      </div>
+    </div>
   </div>
   <div class="left">
     <label for="companyWebsite">Company website</label>
@@ -51,21 +99,37 @@
       style="width: 150px"
       type="text"
       class="form-control"
-      placeholder="companyWebsite"
       name="companyWebsite"
+      required
+      #companyWebsite="ngModel"
       [(ngModel)]="company.companyWebsite"
     />
+    <div
+      *ngIf="
+        !companyWebsite?.valid &&
+        (companyWebsite?.dirty || companyWebsite?.touched)
+      "
+      class="error"
+    >
+      <div *ngIf="companyCEO.errors">
+        <p style="color: red">company website is required</p>
+      </div>
+    </div>
   </div>
   <div class="left">
-    <label for="stockExchangeEnum">Stock Exchange</label>
-    <input
-      style="width: 150px"
-      type="text"
-      class="form-control"
-      placeholder="stockExchangeEnum"
-      name="stockExchangeEnum"
+    <label for="stockExchange" style="margin-top: 40px">Select Exchange </label>
+    <select
+      name="stockExchange"
+      style="margin-left: 10px"
       [(ngModel)]="company.stockExchangeEnum"
-    />
+    >
+      <option name="stockExchange" [ngValue]="null">
+        <h3>Select Exchange</h3>
+      </option>
+      <option *ngFor="let exchange of exchanges" [value]="exchange">
+        {{ exchange }}
+      </option>
+    </select>
   </div>
 </form>
 <br />
@@ -102,9 +166,30 @@
           [(ngModel)]="stock.startDate"
         />
       </td>
-      <td ><button class="btn btn-primary" type="submit" (click)="removeItem(i)">Delete</button></td>
+      <td>
+        <button
+          class="btn btn-primary"
+          style="width: 200px"
+          type="submit"
+          (click)="removeItem(i)"
+        >
+          Delete
+        </button>
+      </td>
     </tr>
   </tbody>
 </table>
-<button type="submit" class="btn btn-primary" (click)="submit()">Save</button>
-<button type="submit" class="btn btn-primary" (click)="cancel()">Cancel</button>
+
+<div class="container">
+  <button
+    type="submit"
+    style="margin-right: 50px"
+    class="btn btn-primary"
+    (click)="submit()"
+  >
+    Save
+  </button>
+  <button type="submit" class="btn btn-primary" (click)="cancel()">
+    Cancel
+  </button>
+</div>
