@@ -19,7 +19,7 @@ export class HomeComponent implements OnInit {
   search(companyCode: any) {
     console.log(companyCode);
 
-    this.router.navigateByUrl(('/companylist/'+companyCode));
+    this.router.navigateByUrl(('/search/'+companyCode)+"/''/''");
 
 
   }
