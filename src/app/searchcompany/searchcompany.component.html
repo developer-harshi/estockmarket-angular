@@ -67,10 +67,10 @@
         {{ stock.stockPrice }}
       </td>
       <td>
-        {{ stock.startDate.date }}
+        {{ stock.startDate| date :'dd/MM/YYYY' }}
       </td>
       <td>
-        <!-- <input {{stock.time}} /> -->
+        {{ stock.startDate|date: 'h:mm a'}}
       </td>
       <td>
         <button

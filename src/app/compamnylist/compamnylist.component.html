@@ -26,7 +26,7 @@
       <td >{{company.stockExchange}}</td>
       <td ><button class="btn btn-primary" type="submit" routerLink="/addcompany/{{company.companyCode}}">Edit</button></td>
       <td ><button class="btn btn-primary" type="submit" (click)="Delete(company.companyCode)">Delete</button></td>
-      <td ><button class="btn btn-primary" type="submit" (click)="View(company.companyCode)">View/Filter</button></td>
+      <td ><button class="btn btn-primary" type="submit" routerLink="/search/{{company.companyCode}}/''/''">View/Filter</button></td>
     </tr>
 
   </tbody>
