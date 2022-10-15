@@ -9,6 +9,12 @@ import { HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 
+const headers = new HttpHeaders({
+  'Content-Type': 'application/json',
+  'Authorization': `Bearer ${localStorage.getItem('token')}`
+});
+const httpOptions = { headers: headers };
+
 const baseUrl = environment.appRoot;
 
 @Injectable({
@@ -21,18 +27,14 @@ export class AuthService {
   }
 
   register(data: Register): Observable<Register> {
-    const httpOptions = {
-      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
-    };
+
     return this.http
       .post(baseUrl + '/company/adduser', data, httpOptions)
       .pipe(catchError(this.handleError('register', data)));
   }
 
   authenticate(user: Login): Observable<any> {
-    const httpOptions = {
-      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
-    };
+
     return this.http
       .post(baseUrl + '/company/Authenticate', user, httpOptions)
       .pipe();

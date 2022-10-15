@@ -6,14 +6,18 @@ import { HomeComponent } from './home/home.component';
 import { AddcompanyComponent } from './addcompany/addcompany.component';
 import { CompamnylistComponent } from './compamnylist/compamnylist.component';
 import { SearchcompanyComponent } from './searchcompany/searchcompany.component';
+import { AuthGuard } from './services/auth.guard';
+
+
+
 const routes: Routes = [
   {path: '', component: LoginComponent},
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'home', component: HomeComponent },
-  { path: 'addcompany/:companycode', component: AddcompanyComponent },
-  { path: 'companylist', component:CompamnylistComponent},
-  { path: 'search/:companyCode/:startdate/:enddate', component:SearchcompanyComponent}
+  { path: 'home', component: HomeComponent,canActivate:[AuthGuard] },
+  { path: 'addcompany/:companycode', component: AddcompanyComponent ,canActivate:[AuthGuard]},
+  { path: 'companylist', component:CompamnylistComponent,canActivate:[AuthGuard]},
+  { path: 'search/:companyCode/:startdate/:enddate', component:SearchcompanyComponent,canActivate:[AuthGuard]}
 ];
 
 @NgModule({
