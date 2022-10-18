@@ -36,18 +36,21 @@ export class SearchcompanyComponent implements OnInit {
       }
     );
     this.registerCompany();
+
   }
   removeItem(id: any) {
     this._stockService.deletestock(id).subscribe(
       (data) => {
         console.log(data);
-        window.location.reload();
+
+        this.routes.navigateByUrl(("/search/"+this.companycode+"/"+this.startDate+"/"+this.endDate));
       },
       (error) => {
         console.log('httperror:');
         console.log(error);
       }
     );
+    this.searchStock(this.companycode,this.startDate,this.endDate);
   }
   searchStock(companyCode: any, startDate: any, endDate: any) {
     this._stockService.fetchstock(companyCode, startDate, endDate).subscribe(

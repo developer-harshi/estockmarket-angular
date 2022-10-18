@@ -13,7 +13,7 @@ export class AddcompanyComponent implements OnInit {
   stockpricedetails: Array<any> = [];
   companycode: any;
   company: any;
-  newItem: any;
+  // newItem: any;
   start:Date | undefined;
   exchanges:Array<any> = ["BSE","NSE"];
 
@@ -49,12 +49,15 @@ export class AddcompanyComponent implements OnInit {
   }
   addItems() {
     console.log('step')
-    let item:any;
+
     this._stockservice.emptystock().subscribe(
       (data) => {
-         item = data;
-         item.companyCode=this.company.companyCode;
-        this.stockpricedetails.push(item);
+
+        //  item.index=
+        data.companyCode=this.company.companyCode;
+         console.log(data);
+        this.stockpricedetails.push(data);
+        console.log(this.stockpricedetails);
       },
       (error) => {
         console.log('httperror:');
